@@ -10,6 +10,6 @@
         android:title="HOME"/>
     <item
         android:id="@+id/navigation_rank"
-        android:icon="@drawable/ranking_ic"
+        android:icon="@drawable/home_ic"
         android:title="RANKING"/>
 </menu>

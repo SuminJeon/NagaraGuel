@@ -35,8 +35,9 @@ interface DothomeService {
     ) : Call<ResponseValidateAndRegisterAndLogin>
 
     @FormUrlEncoded
-    @POST(" /:id/group/:name/earn")
+    @POST("/{id}/group/earn")
     fun requestPlusMandarine(
+        @Path("id") useid : String,
         @Field("id") userID : String
     ) : Call<GetMandarineData>
 }

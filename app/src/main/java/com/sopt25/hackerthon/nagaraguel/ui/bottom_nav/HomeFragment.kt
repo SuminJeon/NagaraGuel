@@ -94,14 +94,14 @@ class PlayingReceiver(id_string: String) : BroadcastReceiver() {
         txtCount.text = serviceData.toString()
         if(serviceData==300){
 
-            val dothomeService = dothomeServiceImpl.service.requestPlusMandarine(id_value)
+            val dothomeService = dothomeServiceImpl.service.requestPlusMandarine(id_value,id_value)
             dothomeService.enqueue(object : Callback<GetMandarineData> {
                 override fun onFailure(call: Call<GetMandarineData>, t: Throwable) {
                     Log.d("hj","error : $t")
                 }
                 override fun onResponse(call: Call<GetMandarineData>, response: Response<GetMandarineData>) {
                     if(response.isSuccessful){
-                        if(response.body()!!.mandarine_stack.equals("")){
+                        if(response.body()!!.success){
                             //받은 귤 개수 데이터 처리
 
                         }else{

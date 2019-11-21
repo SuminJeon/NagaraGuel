@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         val adapter = MyPagerAdapter(supportFragmentManager)
         adapter.addFragment(MyTotalFragment())
         adapter.addFragment(HomeFragment())
-        adapter.addFragment(RankFragment())
+        adapter.addFragment(RankFragment(this))
         viewPager.adapter=adapter
     }
 

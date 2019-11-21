@@ -3,7 +3,10 @@ package com.sopt25.hackerthon.nagaraguel.ui.register
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.pickcocast.loginandboard.network.DothomeServiceImpl
 import com.pickcocast.loginandboard.network.request.validate.RequestValidation
@@ -29,36 +32,56 @@ class RegisterActivity : AppCompatActivity() {
     }
     private fun init(){
 
-
-        //아이디 중복확인
-        btn_validate.setOnClickListener{
-            val id_string = et_id.text.toString()
-            if(id_string.equals("")){
-                messageToastShow("아이디는 빈칸일 수 없습니다.")
-                return@setOnClickListener
-            }else{
-                //아이디 중복검사 요청. -> 이상없으면 validate true로, 버튼과 아이디 비활성화
-                requestValidation.requestValidate(id_string).enqueue(
-                    object : Callback<ResponseValidateAndRegisterAndLogin> {
-                        override fun onResponse(call: Call<ResponseValidateAndRegisterAndLogin>, response: Response<ResponseValidateAndRegisterAndLogin>) {
-                            if(response.isSuccessful){//네트워크 통신 성공했을 때.
-                                validate  = response.body()!!.success
-                                if(validate){
-                                    messageToastShow("사용할 수 있는 아이디입니다.")
-                                    et_id.isEnabled = false
-                                    btn_validate.isEnabled = false
-                                }else{
-                                    messageToastShow("중복된 아이디 입니다.")
+        et_id.setOnFocusChangeListener(object :View.OnFocusChangeListener{
+            override fun onFocusChange(v: View?, hasFocus: Boolean) {
+                if(!hasFocus){
+                    val id_string = et_id.text.toString()
+                    if(id_string.equals("")){
+                        messageToastShow("아이디는 빈칸일 수 없습니다.")
+                        img_id_check.setImageResource(R.drawable.ic_check)
+                        validate = false
+                        return
+                    }else{
+                        //아이디 중복검사 요청. -> 이상없으면 validate true로, 버튼과 아이디 비활성화
+                        requestValidation.requestValidate(id_string).enqueue(
+                            object : Callback<ResponseValidateAndRegisterAndLogin> {
+                                override fun onResponse(call: Call<ResponseValidateAndRegisterAndLogin>, response: Response<ResponseValidateAndRegisterAndLogin>) {
+                                    if(response.isSuccessful){//네트워크 통신 성공했을 때.
+                                        validate  = response.body()!!.success
+                                        if(validate){
+                                            messageToastShow("사용할 수 있는 아이디입니다.")
+                                            img_id_check.setImageResource(R.drawable.ic_check_ok)
+                                        }else{
+                                            messageToastShow("중복된 아이디 입니다.")
+                                            img_id_check.setImageResource(R.drawable.ic_check_no)
+                                        }
+                                    }
+                                }
+                                override fun onFailure(call: Call<ResponseValidateAndRegisterAndLogin>, t: Throwable) {
+                                    Log.d("hj","error: $t")
                                 }
                             }
-                        }
-                        override fun onFailure(call: Call<ResponseValidateAndRegisterAndLogin>, t: Throwable) {
-                            Log.d("hj","error: $t")
-                        }
+                        )
                     }
-                )
+                }
             }
-        }
+
+        })
+        //아이디 중복확인
+        et_id.addTextChangedListener(object :TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+        })
 
         //회원가입 버튼
         btn_register.setOnClickListener{

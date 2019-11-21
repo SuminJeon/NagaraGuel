@@ -1,9 +1,13 @@
 package com.sopt25.hackerthon.nagaraguel.ui.main
 
+import android.app.Activity
+import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.core.view.get
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
@@ -16,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
     lateinit var viewPager_main : ViewPager
+    lateinit var auto : SharedPreferences
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
         when(p0.itemId){
             R.id.navigation_home ->{
@@ -37,6 +42,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         init()
     }
     private fun init(){
+
         viewPager_main = findViewById(R.id.fragment_container)
         setUpViewPager(viewPager_main)
         bottom_navigation_view.setOnNavigationItemSelectedListener(this)

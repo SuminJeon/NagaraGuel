@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_my_total"
-        android:icon="@drawable/ic_my_total"
-        android:title="내 기록"/>
+        android:icon="@drawable/record_ic"
+        android:title="RECORD"/>
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home"
-        android:title="홈"/>
+        android:icon="@drawable/home_ic"
+        android:title="HOME"/>
     <item
         android:id="@+id/navigation_rank"
-        android:icon="@drawable/ic_rank"
-        android:title="랭킹"/>
+        android:icon="@drawable/ranking_ic"
+        android:title="RANKING"/>
 </menu>

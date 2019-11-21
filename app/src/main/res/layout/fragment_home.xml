@@ -1,38 +1,304 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.bottom_nav.HomeFragment">
 
     <TextView
-        android:id="@+id/tv_walkingCount"
+        android:id="@+id/exist_walk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="걸음 수"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tv_lastCount"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/the_lux_go_m"
+        android:textFontWeight="700"
+        android:textStyle="bold"
+        android:text="일찍 활동하여 \n더 많은 귤을 획득하세요! "
+        android:textSize="21sp"
+        android:layout_marginBottom="32dp"
+        android:textColor="#000000"
+        android:lineSpacingExtra="9sp"/>
+
     <TextView
-        android:id="@+id/tv_lastCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="남은 걸음 수"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_walkingCount"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:layout_marginLeft="16dp"
+        android:fontFamily="@font/the_lux_go_m"
+        android:textFontWeight="400"
+        android:lineSpacingExtra="2sp"
+        android:text="귤 받기까지 남은 걸음"
+        android:textColor="#8a000000"
+        android:textSize="12sp" />
 
-    <Button
-        android:layout_width="wrap_content"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:src="@drawable/home_img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/linear" />
+
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_walkingCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:lineSpacingExtra="10sp"
+                android:text="0"
+                android:textFontWeight="700"
+                android:textColor="@color/colorPrimary"
+                android:textSize="48sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:lineSpacingExtra="4sp"
+                android:text=" / 300"
+                android:textColor="@color/colorPrimary"
+                android:textFontWeight="700"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:fontFamily="@font/the_lux_go_m"
+                android:textFontWeight="400"
+                android:lineSpacingExtra="3sp"
+                android:text="걸음"
+                android:textColor="#61000000"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_start"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="32dp"
+                android:background="@drawable/round_corner_small"
+                android:text="시작"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="181dp"
+            android:background="@drawable/round_corner_red"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linear">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/clock_ic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/the_lux_go_m"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="2sp"
+                android:text="오늘의 마지막 기회!"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="시작"
-        app:layout_constraintTop_toBottomOf="@+id/tv_walkingCount"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="10dp"
-        android:id="@+id/btn_start"/>
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/the_lux_go_m"
+            android:textSize="16sp"
+            android:textColor="#8a000000"
+            android:lineSpacingExtra="3sp"
+            android:text="정각까지 남은 시간 "/>
+        <TextView
+            android:id="@+id/exist_time"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="11dp"
+            android:textSize="30sp"
+            android:textColor="#ff5555"
+            android:lineSpacingExtra="7sp"
+            android:text="05"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="21sp"
+            android:textColor="#de000000"
+            android:lineSpacingExtra="4sp"
+            android:text=" 분"/>
+    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bottom_illust"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#61000000"
+                android:lineSpacingExtra="3sp"
+                android:text="~AM7"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="#1f000000"
+                android:lineSpacingExtra="2sp"
+                android:text="귤 5개"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="18dp"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bottom_illust"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#61000000"
+                android:lineSpacingExtra="3sp"
+                android:text="~AM8"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="#1f000000"
+                android:lineSpacingExtra="2sp"
+                android:text="귤 4개"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="18dp"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bottom_illust"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#61000000"
+                android:lineSpacingExtra="3sp"
+                android:text="~AM9"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="#1f000000"
+                android:lineSpacingExtra="2sp"
+                android:text="귤 3개"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="18dp"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bottom_illust"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#61000000"
+                android:lineSpacingExtra="3sp"
+                android:text="~AM10"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="#1f000000"
+                android:lineSpacingExtra="2sp"
+                android:text="귤 2개"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="18dp"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/orange_mandarine_illust"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#61000000"
+                android:lineSpacingExtra="3sp"
+                android:text="~AM11"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="#1f000000"
+                android:lineSpacingExtra="2sp"
+                android:text="귤 1개"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

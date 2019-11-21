@@ -19,6 +19,7 @@ import com.sopt25.hackerthon.nagaraguel.ui.bottom_nav.RankFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+    var id_string = ""
     lateinit var viewPager_main : ViewPager
     lateinit var auto : SharedPreferences
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
@@ -42,7 +43,8 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         init()
     }
     private fun init(){
-
+        val intent = getIntent()
+        id_string = intent.getStringExtra("userID")
         viewPager_main = findViewById(R.id.fragment_container)
         setUpViewPager(viewPager_main)
         bottom_navigation_view.setOnNavigationItemSelectedListener(this)
@@ -73,7 +75,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     private fun setUpViewPager(viewPager : ViewPager){
         val adapter = MyPagerAdapter(supportFragmentManager)
         adapter.addFragment(MyTotalFragment())
-        adapter.addFragment(HomeFragment())
+        adapter.addFragment(HomeFragment(id_string))
         adapter.addFragment(RankFragment(this))
         viewPager.adapter=adapter
     }

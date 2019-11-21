@@ -20,8 +20,11 @@ import org.jetbrains.anko.support.v4.toast
 
 
 // PlayingReceiver에서 사용
-lateinit var serviceData: String
+var serviceData: Int = 0
+var lastCount: Int = 0
+
 lateinit var txtCount: TextView
+lateinit var txtLastCount: TextView
 
 class HomeFragment : Fragment() {
 
@@ -30,7 +33,11 @@ class HomeFragment : Fragment() {
 
     var flag: Boolean = true
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         var v: View = inflater.inflate(R.layout.fragment_home, container, false)
 
@@ -72,11 +79,18 @@ class HomeFragment : Fragment() {
         }
     }
 
-    class PlayingReceiver: BroadcastReceiver(){
+    class PlayingReceiver : BroadcastReceiver() {
         override fun onReceive(p0: Context?, p1: Intent?) {
             Log.i("PlayingReceiver", "IN")
-            serviceData = p1!!.getStringExtra("stepService")
-            txtCount.text = serviceData
+            serviceData = p1!!.getIntExtra("stepService", 0)
+            lastCount = p1!!.getIntExtra("lastService", 0)
+
+            Log.i("lastCount", lastCount.toString())
+            txtCount.text = serviceData.toString()
+
+            // txtLastCount.text = lastCount.toString()
+            // txtLastCount.text = lastCount.toString()
+
         }
     }
 

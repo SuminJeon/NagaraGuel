@@ -13,6 +13,7 @@ import android.util.Log
 public class StepCheckService : Service(), SensorEventListener {
 
     var stepCount: Int = 0
+    var lastCount: Int = 0
     var lastTime: Long? = 0
 
     var speed: Float? = null
@@ -91,9 +92,11 @@ public class StepCheckService : Service(), SensorEventListener {
                     Log.i("onSensorChanged_2", "IN")
                     var intent = Intent("manbo") // this, MainActivity::class.java
                     stepCount = stepCount + 1
+                    lastCount = 1000 - stepCount
 
-                    var msg: String? = (stepCount/2).toString()
-                    intent.putExtra("stepService", msg)
+                    // var msg: String? = (stepCount/2).toString()
+                    intent.putExtra("stepService", stepCount)
+                    intent.putExtra("lastService", lastCount)
 
                     Log.i("result", stepCount.toString())
 

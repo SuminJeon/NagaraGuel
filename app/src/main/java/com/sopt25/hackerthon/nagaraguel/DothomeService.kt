@@ -2,6 +2,7 @@ package com.pickcocast.loginandboard.network
 
 
 
+import com.sopt25.hackerthon.nagaraguel.data.GetMandarineData
 import com.sopt25.hackerthon.nagaraguel.data.ResponseValidateAndRegisterAndLogin
 import retrofit2.Call
 import retrofit2.http.*
@@ -32,4 +33,10 @@ interface DothomeService {
         @Field("id") userID : String,
         @Field("pwd")userPassword : String
     ) : Call<ResponseValidateAndRegisterAndLogin>
+
+    @FormUrlEncoded
+    @POST(" /:id/group/:name/earn")
+    fun requestPlusMandarine(
+        @Field("id") userID : String
+    ) : Call<GetMandarineData>
 }
